@@ -9,7 +9,6 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
-    <link rel="stylesheet" type="text/css" href="../css/hello-parallax.css">
 </head>
 
 
@@ -34,10 +33,10 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-primary" href="/login.php">
+              <a class="button is-primary" href="login.php">
                 <strong>Iniciar Sesión</strong>
               </a>
-              <a class="button is-light" href="/funcionalidades/importar_usuarios.php">
+              <a class="button is-light" href="funcionalidades/importar_usuarios.php">
                 Importar Usuarios
               </a>
             </div>

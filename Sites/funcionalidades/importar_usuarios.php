@@ -1,11 +1,12 @@
 <?php
-require("../config/conexion.php");
+    require('../config/conection.php');
 
-$query = "SELECT trabajador_id, nombre, pasaporte 
-          FROM trabajadores;";
-$result = $db_41 -> prepare($query);
-$result -> execute();
-$personas = $result -> fetchAll();
+    $query = "SELECT trabajador_id, nombre, pasaporte 
+            FROM trabajadores;";
+
+    $result = $db_41 -> prepare($query);
+    $result -> execute();
+    $personas = $result -> fetchAll();
 ?>
 
 <table align='center' class="table is-striped">
