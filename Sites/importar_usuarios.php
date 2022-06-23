@@ -1,10 +1,9 @@
 <?php
-    require('../config/conection.php');
+    require("../config/conection.php");
 
-    $query = "SELECT trabajador_id, nombre, pasaporte 
-            FROM trabajadores;";
+    $query = "SELECT * FROM trabajadores;";
 
-    $result = $db_41 -> prepare($query);
+    $result = $db2 -> prepare($query);
     $result -> execute();
     $personas = $result -> fetchAll();
 ?>
