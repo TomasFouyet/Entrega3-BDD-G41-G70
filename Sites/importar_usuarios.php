@@ -1,7 +1,7 @@
 <?php
-    require("../config/conection.php");
+    require("config/conection.php");
 
-    $query = "SELECT * FROM trabajadores;";
+    $query = "SELECT * FROM persona;";
 
     $result = $db2 -> prepare($query);
     $result -> execute();

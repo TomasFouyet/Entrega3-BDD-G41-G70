@@ -36,7 +36,7 @@
               <a class="button is-primary" href="login.php">
                 <strong>Iniciar Sesión</strong>
               </a>
-              <a class="button is-light" href="/importar_usuarios.php">
+              <a class="button is-light" href="importar_usuarios.php">
                 Importar Usuarios
               </a>
             </div>
