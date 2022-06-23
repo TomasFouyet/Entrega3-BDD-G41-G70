@@ -34,7 +34,7 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-primary" href="/~grupo41/login.php">
+              <a class="button is-primary" href="/login.php">
                 <strong>Iniciar Sesión</strong>
               </a>
               <a class="button is-light" href="/funcionalidades/importar_usuarios.php">
@@ -47,7 +47,7 @@
 
     <?php if (isset($_SESSION['user_name'])) { ?>
       <h2 class="title is-1"> Hola <?php echo $_SESSION['user_name'] ?>>
-        <form class="buttons" action="/~grupo41/logout.php">
+        <form class="buttons" action="/logout.php">
           <input class="button" type="submit" value="Cerrar Session">
         </form>
     <?php } else { ?>
