@@ -1,8 +1,9 @@
 CREATE OR REPLACE FUNCTION
 
-crear_pasajero_usuario (usuario_id INT, username VARCHAR)
+crear_pasajero_usuario (usuario_id integer, username varchar)
 
 RETURN BOOLEAN AS $$
+
 
 BEGIN
 

@@ -6,7 +6,7 @@
 
     $result = $db2 -> prepare($query);
     $result -> execute();
-    $personas = $result -> fetchAll();
+    // $personas = $result -> fetchAll();
 
     // Esta parte nos entrega las compañias
     $query = "SELECT * FROM vuelos;";
