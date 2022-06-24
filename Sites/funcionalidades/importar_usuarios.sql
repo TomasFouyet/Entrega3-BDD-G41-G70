@@ -7,7 +7,7 @@ RETURN BOOLEAN AS $$
 BEGIN
 
     IF 'DGAC' NOT IN (SELECT username FROM Usuarios) THEN
-        INSERT INTO Usuarios values(1, 'DGAC', 'admin', 'Admin DGAC');
+        INSERT INTO Usuarios values(999, 'DGAC', 'admin', 'Admin DGAC');
 
         RETURN TRUE;
 
