@@ -19,7 +19,7 @@
 
         $result = $db2 -> prepare($query);
         $result -> execute();
-        $nueva_compania = $result -> fetchAll();
+        $result -> fetchAll();
     }
 
     // Esta parte nos entrega las persona/pasajeros
@@ -34,7 +34,7 @@
 
         $result = $db2 -> prepare($query);
         $result -> execute();
-        $nuevo_usuario = $result -> fetchAll();
+        $result -> fetchAll();
     }
 ?>
 
