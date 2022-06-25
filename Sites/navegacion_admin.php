@@ -11,7 +11,7 @@
 ?>
 <!-- Esto de Aqui todavia no esta funcionando, tenemos que ver como hacerlo funcionar -->
 <h2 align="center"> Buscar Vuelo por fechas:</h2>
-  <form align="center" action="consultas/consulta_vuelos_fecha.php" method="post">
+  <form align="center" method="post">
     Ingrese las fechas:
     <input type="date" name="fecha1"> a <input type="date" name="fecha2">
     <br>
