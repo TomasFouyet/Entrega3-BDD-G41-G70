@@ -1,5 +1,7 @@
+<?php error_reporting (0);?>
 <?php
     require("config/conection.php");
+
 
     $query1 = "SELECT * FROM tipo_vuelo AS tv, propuesta_de_vuelo AS pdv 
                WHERE tv.id_extra = pdv.id_extra;";
@@ -18,15 +20,28 @@
     <input button class="button is-link" type="submit" value="Buscar">
     <br/><br/>
 </form>
+
+
+<!-- Filtro fecha -->
 <?php
-    require("../config/conexion.php"); 
+    require("config/conection.php");
     $fecha1 = $_POST["fecha1"];
     $fecha2 = $_POST["fecha2"];
-    $query2 = "SELECT * FROM tipo_vuelo AS tv, propuesta_de_vuelo AS pdv
-               WHERE tv.fecha_salida >= '$fecha1' AND tv.fecha_llegada <= '$fecha2';";
-    $result2 = $db -> prepare($query2);
-    $result2 -> execute();
-    $viajes = $result2 -> fetchAll();
+    if (empty($fecha1)){
+        $query2 = "SELECT DISTINCT codigo,codigo_compania,estado,fecha_salida,fecha_llegada FROM tipo_vuelo AS tv, propuesta_de_vuelo AS pdv
+                   WHERE tv.id_extra = pdv.id_extra;";
+        $result2 = $db -> prepare($query2);
+        $result2 -> execute();
+        $viajes = $result2 -> fetchAll();
+    }
+    else{
+        $query2 = "SELECT DISTINCT codigo,codigo_compania,estado,fecha_salida,fecha_llegada FROM tipo_vuelo AS tv, propuesta_de_vuelo AS pdv
+               WHERE tv.fecha_salida >= '$fecha1' AND tv.fecha_llegada <= '$fecha2' AND tv.id_extra = pdv.id_extra;";
+        $result2 = $db -> prepare($query2);
+        $result2 -> execute();
+        $viajes = $result2 -> fetchAll();
+
+    }
 ?>
 
 
@@ -38,22 +53,23 @@
         <th>Estado Del Vuelo</th>
         <th>Fecha Salida</th>
         <th>Fecha Llegada</th>
-        <th>Id aerodromo salida</th>
-        <th>Id aerodromo llegada</th>
+        <th></th>
+        <th></th>
     </tr>
     <?php
-    foreach($propuestas as $propuesta){
-        if($propuesta[0] == 'pendiente') {
+    foreach($viajes as $viaje){
+        if($viaje[2] == 'pendiente') {
             echo "<tr>
-                    <td>$propuesta[1]</td>
-                    <td>$propuesta[9]</td>
-                    <td>$propuesta[0]</td>
-                    <td>$propuesta[2]</td>
-                    <td>$propuesta[3]</td>
-                    <td>$propuesta[4]</td>
-                    <td>$propuesta[5]</td>
+                    <td>$viaje[0]</td>
+                    <td>$viaje[1]</td>
+                    <td>$viaje[2]</td>
+                    <td>$viaje[3]</td>
+                    <td>$viaje[4]</td>
+                    <td><button>Aceptar</button></td>
+                    <td><button>Rechazar</button></td>
                 </tr>";
         }
     }
     ?>
 </table>
+
