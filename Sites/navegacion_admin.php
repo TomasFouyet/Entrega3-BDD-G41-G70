@@ -1,5 +1,5 @@
 <?php
-
+    require("config/conection.php");
 
     $query1 = "SELECT * FROM tipo_vuelo AS tv, propuesta_de_vuelo AS pdv 
                WHERE tv.id_extra = pdv.id_extra;";
@@ -10,7 +10,24 @@
 
 ?>
 
-
+<h2 align="center"> Buscar Vuelo por fechas:</h2>
+  <form align="center" action="consultas/consulta_vuelos_fecha.php" method="post">
+    Ingrese las fechas:
+    <input type="date" name="fecha1"> a <input type="date" name="fecha2">
+    <br>
+    <input button class="button is-link" type="submit" value="Buscar">
+    <br/><br/>
+</form>
+<?php
+    require("../config/conexion.php"); #Llama a conexión, crea el objeto PDO y obtiene la variable $db
+    $fecha1 = $_POST["fecha1"];
+    $fecha2 = $_POST["fecha2"];
+    $query2 = "SELECT * FROM tipo_vuelo AS tv, propuesta_de_vuelo AS pdv
+               WHERE tv.fecha_salida >= '$fecha1' AND tv.fecha_llegada <= '$fecha2';";
+    $result2 = $db -> prepare($query2);
+    $result2 -> execute();
+    $viajes = $result2 -> fetchAll();
+?>
 
 
 
@@ -23,12 +40,19 @@
         <th>Fecha Llegada</th>
         <th>Id aerodromo salida</th>
         <th>Id aerodromo llegada</th>
-
     </tr>
     <?php
     foreach($propuestas as $propuesta){
         if($propuesta[0] == 'pendiente') {
-            echo "<tr><td>$propuesta[1]</td><td>$propuesta[9]</td><td>$propuesta[0]</td><td>$propuesta[2]</td><td>$propuesta[3]</td><td>$propuesta[4]</td><td>$propuesta[5]</td></tr>";
+            echo "<tr>
+                    <td>$propuesta[1]</td>
+                    <td>$propuesta[9]</td>
+                    <td>$propuesta[0]</td>
+                    <td>$propuesta[2]</td>
+                    <td>$propuesta[3]</td>
+                    <td>$propuesta[4]</td>
+                    <td>$propuesta[5]</td>
+                </tr>";
         }
     }
     ?>
