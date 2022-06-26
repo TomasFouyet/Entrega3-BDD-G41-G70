@@ -65,11 +65,27 @@
                     <td>$viaje[2]</td>
                     <td>$viaje[3]</td>
                     <td>$viaje[4]</td>
-                    <td><button>Aceptar</button></td>
-                    <td><button>Rechazar</button></td>
+                    <td>
+                        <form method='get' >
+                            <input type='submit' value='Aceptar' name = $viaje[0]>
+                        </form>
+                    </td>
+                    <td>
+                        <form method='get' >
+                            <input type='submit' value='Rechazar' name = $viaje[0]>
+                        </form>
+                    </td>
                 </tr>";
+            
         }
     }
+    print_r ($_REQUEST); // Array de Llave y Valor
+    $llave = key($_REQUEST); // Llave
+    $valor = $_REQUEST[key($_REQUEST)]; // Valor
+    print_r ($llave);
+    print_r ($valor);
+
     ?>
 </table>
+
 
