@@ -1,7 +1,8 @@
 <?php
     require("config/conection.php");
+    $compania = "LAT"; // A modo de filtro, extraer usuario desde login
 
-    $query1 = "SELECT * FROM tipo_vuelo AS tv, propuesta_de_vuelo AS pdv 
+    $query1 = "SELECT DISTINCT codigo,codigo_compania,estado,fecha_salida,fecha_llegada FROM tipo_vuelo AS tv, propuesta_de_vuelo AS pdv 
                WHERE tv.id_extra = pdv.id_extra;";
     $result1 = $db -> prepare($query1);
     $result1 -> execute();
@@ -17,20 +18,16 @@
         <th>Estado Del Vuelo</th>
         <th>Fecha Salida</th>
         <th>Fecha Llegada</th>
-        <th>Id aerodromo salida</th>
-        <th>Id aerodromo llegada</th>
     </tr>
     <?php
     foreach($propuestas as $propuesta){
-        if($propuesta[0] == 'aceptado') {
+        if($propuesta[2] == 'aceptado' and $propuesta[1]== $compania) {
             echo "<tr>
-                    <td>$propuesta[1]</td>
-                    <td>$propuesta[9]</td>
                     <td>$propuesta[0]</td>
+                    <td>$propuesta[1]</td>
                     <td>$propuesta[2]</td>
                     <td>$propuesta[3]</td>
                     <td>$propuesta[4]</td>
-                    <td>$propuesta[5]</td>
                 </tr>";
         }
     }
@@ -45,20 +42,16 @@
         <th>Estado Del Vuelo</th>
         <th>Fecha Salida</th>
         <th>Fecha Llegada</th>
-        <th>Id aerodromo salida</th>
-        <th>Id aerodromo llegada</th>
     </tr>
     <?php
     foreach($propuestas as $propuesta){
-        if($propuesta[0] == 'rechazado') {
+        if($propuesta[2] == 'rechazado' and $propuesta[1]== $compania) {
             echo "<tr>
-                    <td>$propuesta[1]</td>
-                    <td>$propuesta[9]</td>
                     <td>$propuesta[0]</td>
+                    <td>$propuesta[1]</td>
                     <td>$propuesta[2]</td>
                     <td>$propuesta[3]</td>
                     <td>$propuesta[4]</td>
-                    <td>$propuesta[5]</td>
                 </tr>";
         }
     }

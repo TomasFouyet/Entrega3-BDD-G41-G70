@@ -79,11 +79,11 @@
             
         }
     }
-    print_r ($_REQUEST); // Array de Llave y Valor
+    // print_r ($_REQUEST); // Array de Llave y Valor
     $llave = key($_REQUEST); // Llave
     $valor = $_REQUEST[key($_REQUEST)]; // Valor
-    print_r ($llave);
-    print_r ($valor);
+    // print_r ($llave);
+    // print_r ($valor);
     $query3 = "SELECT estado, codigo FROM tipo_vuelo WHERE codigo = '$llave';";
     $result3 = $db -> prepare($query3);
     $result3 -> execute();
