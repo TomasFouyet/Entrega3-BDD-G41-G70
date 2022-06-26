@@ -84,7 +84,20 @@
     $valor = $_REQUEST[key($_REQUEST)]; // Valor
     print_r ($llave);
     print_r ($valor);
-
+    $query3 = "SELECT estado, codigo FROM tipo_vuelo WHERE codigo = '$llave';";
+    $result3 = $db -> prepare($query3);
+    $result3 -> execute();
+    $cambios = $result3 -> fetchAll();
+    if($valor == "Aceptar"){
+        $query4 = "UPDATE tipo_vuelo SET estado = 'aceptado' WHERE codigo = '$llave';";
+        $result4 = $db -> prepare($query4);
+        $result4 -> execute();
+    }
+    else {
+        $query5 = "UPDATE tipo_vuelo SET estado = 'rechazado' WHERE codigo = '$llave';";
+        $result5 = $db -> prepare($query5);
+        $result5 -> execute();
+    }
     ?>
 </table>
 
