@@ -2,7 +2,7 @@
 
 <?php
     require("config/conection.php");
-    $usuario = "V03976673";
+    $usuario = "V03976673"; // Extraer usuario desde login
     // Pasajeros 
     $query = "SELECT p.pasaporte_pasajero,r.codigo_reserva,p.numero_ticket,p.numero_asiento,p.clase,p.comida_y_maleta FROM pasajeros AS p, reservas AS r 
               WHERE r.reserva_id = p.reserva_id ;";
@@ -89,14 +89,56 @@
   $origen = $_POST["origen"];
   $destino = $_POST["destino"];
   $fecha = $_POST["fecha"];
+  echo $origen;
 
-  $query3 = "SELECT a.nombre_ciudad FROM aerodromos AS a, operacion_salida AS os, operacion_llegada as op
-             WHERE a.nombre_ciudad = '$origen';";
+  // Despegue
+  $query3 = "SELECT a.nombre_ciudad, tv.fecha_salida, tv.codigo
+             FROM aerodromos as a,  tipo_vuelo as tv;
+             WHERE a.nombre_ciudad = '$origen' and tv.estado = 'aceptado' and a.aerodromo_id = a.aerodromo_salida_id and CONVERT(VARCHAR(25),tv.fecha_salida,126) LIKE '$fecha';";
   $result3 = $db -> prepare($query3);
   $result3 -> execute();
   $filtros = $result3 -> fetchAll();
 
+  // Llegada
+  $query4 = "SELECT a.nombre_ciudad, tv.fecha_llegada, tv.codigo
+             FROM aerodromos as a,  tipo_vuelo as tv;
+             WHERE a.nombre_ciudad = '$destino' and tv.estado = 'aceptado' and a.aerodromo_id = a.aerodromo_llegada_id;";
+  $result4 = $db -> prepare($query4);
+  $result4 -> execute();
+  $filtros2 = $result4 -> fetchAll();
+
+  $query5 = "SELECT *
+             FROM $filtros as f,$filtros2 as f2;
+             WHERE f.codigo = f2.codigo;";
+
+  $result5 = $db -> prepare($query5);
+  $result5 -> execute();
+  $filtros3 = $result4 -> fetchAll();
+
+
+
+
 ?>
+
+
+<table align='center' class="table is-striped">
+    <tr>
+        <th>Nombre_ciudad</th>
+        <th>Nombre_ciudad2</th>
+        <th>Nombre_ciudad</th>
+
+    </tr>
+    <?php
+    foreach($filtros as $filtro3){
+      echo "<tr>
+              <td>$filtro[0]</td>
+              <td>$filtro[1]</td>
+              <td>$filtro[2]</td>
+
+          </tr>";
+    }
+    ?>
+</table>
 
 
 <table align='center' class="table is-striped">
@@ -105,9 +147,11 @@
 
     </tr>
     <?php
-    foreach($filtros as $filtro){
+    foreach($filtros2 as $filtro){
       echo "<tr>
               <td>$filtro[0]</td>
+              <td>$filtro[1]</td>
+              <td>$filtro[2]</td>
 
           </tr>";
     }
