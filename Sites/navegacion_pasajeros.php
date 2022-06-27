@@ -2,7 +2,7 @@
 
 <?php
     require("config/conection.php");
-    $usuario = "V03976673"; // Extraer usuario desde login
+    $usuario = $_GET["usuario"];
     // Pasajeros 
     $query = "SELECT p.pasaporte_pasajero,r.codigo_reserva,p.numero_ticket,p.numero_asiento,p.clase,p.comida_y_maleta FROM pasajeros AS p, reservas AS r 
               WHERE r.reserva_id = p.reserva_id ;";

@@ -1,6 +1,6 @@
 <?php
     require("config/conection.php");
-    $compania = "LAT"; // A modo de filtro, extraer usuario desde login
+    $compania = $_GET["usuario"];
 
     $query1 = "SELECT DISTINCT codigo,codigo_compania,estado,fecha_salida,fecha_llegada FROM tipo_vuelo AS tv, propuesta_de_vuelo AS pdv 
                WHERE tv.id_extra = pdv.id_extra;";
