@@ -24,15 +24,15 @@
            foreach($resultados as $resultado) {
            $id_usuario = $resultado[0];
          }
-                if($tipo = 'Admin DGAC') {
+                if($tipo == 'Admin DGAC') {
                     echo "<script>location.href='navegacion_admin.php?';</script>";
                     exit();
                 }
-                elseif($tipo = 'Compania Aerea') {
+                elseif($tipo == 'Compania Aerea') {
                     echo "<script>location.href='navegacion_admin.php?usuario=$name';</script>";
                     exit();
                 }
-                elseif ($tipo = 'Pasajero') {
+                elseif ($tipo == 'Pasajero') {
                     echo "<script>location.href='navegacion_admin.php?usuario=$name';</script>";
                     exit();
                 }
