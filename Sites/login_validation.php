@@ -22,18 +22,19 @@
            } 
            else {
            foreach($resultados as $resultado) {
-           $id_usuario = $resultado[0];
+           $user = $resultado[1];
+           $tipo = $resultado[3];
          }
                 if($tipo == 'Admin DGAC') {
                     echo "<script>location.href='navegacion_admin.php?';</script>";
                     exit();
                 }
                 elseif($tipo == 'Compania Aerea') {
-                    echo "<script>location.href='navegacion_compania.php?usuario=$name';</script>";
+                    echo "<script>location.href='navegacion_compania.php?usuario=$user';</script>";
                     exit();
                 }
                 elseif ($tipo == 'Pasajero') {
-                    echo "<script>location.href='navegacion_pasajeros.php?usuario=$name';</script>";
+                    echo "<script>location.href='navegacion_pasajeros.php?usuario=$user';</script>";
                     exit();
                 }
                 else {
