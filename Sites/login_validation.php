@@ -29,11 +29,11 @@
                     exit();
                 }
                 elseif($tipo == 'Compania Aerea') {
-                    echo "<script>location.href='navegacion_admin.php?usuario=$name';</script>";
+                    echo "<script>location.href='navegacion_compania.php?usuario=$name';</script>";
                     exit();
                 }
                 elseif ($tipo == 'Pasajero') {
-                    echo "<script>location.href='navegacion_admin.php?usuario=$name';</script>";
+                    echo "<script>location.href='navegacion_pasajeros.php?usuario=$name';</script>";
                     exit();
                 }
                 else {
