@@ -11,7 +11,7 @@
         $name = $_POST["username"];
         $password = $_POST["password"];
 
-        $query = "SELECT id_usuario, username, pasaword, tipo FROM Usuarios WHERE username = '$name' AND contraseña = '$password'";
+        $query = "SELECT id_usuario, username, contrasena, tipo FROM Usuarios WHERE username = '$name' AND contrasena = '$password'";
         $result = $db2 -> prepare($query);
     	$result -> execute();
 	    $resultados = $result -> fetchAll();
